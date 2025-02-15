@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Sigi na pi</title>
+    <style>
+        /* Modal Styling */
+        #confirmationModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+        #confirmButton {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Can I date you?</h1>
+    <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif" height="200"/>
+
+    <div id="By" style="position:absolute; left:25%; top:370px;">
+        <input type="button" value=" YES " onClick="f1()" />
+    </div>
+
+    <div id="Bn" style="position:absolute; left:63%; top:370px;">
+        <input type="button" value=" NOOOO " onMouseOver="f()" />
+    </div>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmationModal">
+        <h2>Weh? Talaga ba? I love you!!!!!</h2>
+        <button id="confirmButton" onClick="proceedToLink()">Yes, Let's go!</button>
+    </div>
+
+    <script>
+        let flag = 1;
+
+        function f1() {
+            document.getElementById('confirmationModal').style.display = 'block';
+        }
+
+        function proceedToLink() {
+            window.location.href = "Card/card.html";
+        }
+
+        function f() {
+            let Bn = document.getElementById("Bn");
+            let positions = [
+                { top: "364px", left: "300px" },
+                { top: "476px", left: "78px" },
+                { top: "358px", left: "147px" },
+                { top: "490px", left: "134px" },
+                { top: "234px", left: "150px" },
+                { top: "441px", left: "245px" },
+                { top: "345px", left: "158px" },
+                { top: "390px", left: "165px" },
+                { top: "231px", left: "349px" },
+                { top: "123px", left: "289px" },
+                { top: "259px", left: "109px" },
+                { top: "300px", left: "170px" },
+                { top: "267px", left: "120px" },
+                { top: "126px", left: "170px" },
+                { top: "298px", left: "347px" },
+                { top: "345px", left: "165px" }
+            ];
+            
+            Bn.style.top = positions[flag - 1].top;
+            Bn.style.left = positions[flag - 1].left;
+            flag = (flag % positions.length) + 1;
+        }
+    </script>
+</body>
+</html>

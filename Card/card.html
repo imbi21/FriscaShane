@@ -1,0 +1,45 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="card.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="valentines">
+        <div class="envelope"></div>
+        <div class="front"></div>
+        <div class="card">
+            <div class="text">Happy </br>Valentine's</br>Day!</br>Frisca Shane!</div>
+            <div class="heart"></div>
+        </div>
+<div class="hearts">
+<div class="one"></div>
+    <div class="two"></div>
+        <div class="three"></div>
+            <div class="four"></div>
+                <div class="five"></div>
+                    
+
+    </div>
+</div>
+
+<div class="shadow"></div>
+</div>
+<!-- jQuery Code -->
+<script>
+    $(document).ready(function() {
+        $(".container").mouseenter(function() {
+            $(".card").stop().animate({
+                top: "-90px"
+            }, "slow");
+        }).mouseleave(function() {
+            $(".card").stop().animate({
+                top: 0
+            }, "slow");
+        });
+    });
+</script>
+</body>
+</html>
