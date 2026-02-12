@@ -1,86 +1,430 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Sigi na pi</title>
-    <style>
-        /* Modal Styling */
-        #confirmationModal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            text-align: center;
-        }
-        #confirmButton {
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>will u go out w me Izca?</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fde2e4;
+      font-family: 'Courier New', 'American Typewriter', 'Georgia', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      margin: 0;
+      color: #3a2c2f;
+    }
+
+    .paper {
+      max-width: 700px;
+      width: 100%;
+      background: #fff9f2;
+      border: 2px solid #fbc4c0;
+      box-shadow: 12px 12px 0 #eec9cb;
+      padding: 2.8rem 2rem 3rem;
+      position: relative;
+      transition: all 0.15s;
+    }
+
+    .paper:after {
+      content: "✧";
+      position: absolute;
+      top: -12px;
+      left: 40%;
+      font-size: 42px;
+      color: #dbb7b7;
+      transform: rotate(-8deg);
+      opacity: 0.7;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -1.5px;
+      color: #97242c;
+      margin-bottom: 0.5rem;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      text-shadow: 2px 2px 0 #ffd8d6;
+      line-height: 1.1;
+      border-bottom: 3px dotted #e6a8a8;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+
+    .gif-frame {
+      background: white;
+      padding: 1rem 1rem 0.8rem;
+      border: 2px solid #f3b5b1;
+      box-shadow: 6px 6px 0 #dba3a3;
+      display: inline-block;
+      margin: 1.8rem 0 1.2rem;
+      transform: rotate(-1deg);
+    }
+
+    img {
+      display: block;
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #b95b5b;
+      image-rendering: crisp-edges;
+    }
+
+    .button-area {
+      position: relative;
+      width: 100%;
+      min-height: 130px;
+      margin-top: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+    }
+
+    .yes-btn-box, .no-btn-box {
+      position: relative;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .yes-btn-box {
+      left: 0%;
+      top: 0;
+    }
+
+    .no-btn-box {
+      position: absolute;
+      left: auto;
+      right: 0;
+      top: 10px;
+      transition: left 0.18s ease-out, top 0.18s ease-out, right 0.18s ease-out;
+    }
+
+    .btn {
+      background: #ffece5;
+      border: 4px solid #c15a5a;
+      color: #3e2828;
+      font-size: 1.9rem;
+      font-weight: 700;
+      padding: 1rem 2.4rem;
+      font-family: 'Courier New', 'Georgia', monospace;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      box-shadow: 8px 8px 0 #a14646;
+      cursor: pointer;
+      transition: 0.05s linear;
+      border-radius: 0px;
+      word-break: keep-all;
+    }
+
+    .btn:active {
+      transform: translate(6px, 6px);
+      box-shadow: 2px 2px 0 #a14646;
+    }
+
+    .yes-btn-box .btn {
+      background: #ffd3d3;
+      border-color: #b33b3b;
+      box-shadow: 8px 8px 0 #863333;
+      color: #4a1a1a;
+    }
+
+    .no-btn-box .btn {
+      background: #ead7d1;
+      border-color: #8f6b6b;
+      box-shadow: 6px 6px 0 #5e4545;
+      color: #2c1e1e;
+      font-size: 1.8rem;
+      padding: 1rem 2rem;
+    }
+
+    .doodle-heart {
+      font-size: 2.6rem;
+      display: inline-block;
+      margin: 0 4px;
+      transform: rotate(6deg);
+      color: #b34444;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(70, 40, 40, 0.4);
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal-note {
+      background: #fffbf0;
+      border: 6px double #c26b6b;
+      padding: 2.5rem 2.2rem;
+      max-width: 550px;
+      width: 90%;
+      box-shadow: 18px 18px 0 rgba(90, 40, 40, 0.2);
+      text-align: center;
+      position: relative;
+      transform: rotate(0.8deg);
+    }
+
+    .modal-note h2 {
+      font-size: 2.6rem;
+      font-family: 'Georgia', serif;
+      color: #a12f2f;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px dashed #d49b9b;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .modal-note p {
+      font-size: 1.7rem;
+      margin: 1.8rem 0 1.2rem;
+      font-style: italic;
+      background: #ffe9e9;
+      padding: 1rem;
+      border-left: 10px solid #d67a7a;
+      font-family: 'Courier New', monospace;
+    }
+
+    .lets-go-btn {
+      background: #d67272;
+      border: 4px solid #420e0e;
+      color: white;
+      font-size: 1.9rem;
+      padding: 1rem 2.8rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+      border: none;
+      border-bottom: 10px solid #562424;
+      cursor: pointer;
+      transition: 0.04s;
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .lets-go-btn:active {
+      border-bottom-width: 3px;
+      transform: translateY(7px);
+    }
+
+    .close-small {
+      color: #765454;
+      margin-top: 1rem;
+      display: inline-block;
+      border-bottom: 2px dotted #ad7a7a;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .scribble {
+      position: absolute;
+      bottom: 15px;
+      right: 25px;
+      font-size: 28px;
+      color: #c28b8b;
+      transform: rotate(-10deg);
+      opacity: 0.5;
+    }
+
+    @media (max-width: 550px) {
+      .paper { padding: 1.8rem; }
+      h1 { font-size: 2rem; }
+      .btn { font-size: 1.5rem; padding: 0.8rem 1.6rem; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Can I date you?</h1>
-    <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif" height="200"/>
+  <div class="paper">
+    <h1>Can I date u?</h1>
+    <span class="doodle-heart">❤️</span><span class="doodle-heart" style="transform: rotate(-12deg);">❤️</span>
 
-    <div id="By" style="position:absolute; left:25%; top:370px;">
-        <input type="button" value=" YES " onClick="f1()" />
+    <div class="gif-frame">
+      <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif" alt="puss in boots eyes" />
     </div>
 
-    <div id="Bn" style="position:absolute; left:63%; top:370px;">
-        <input type="button" value=" NOOOO " onMouseOver="f()" />
+    <div class="button-area">
+      <div class="yes-btn-box" id="yesContainer">
+        <button class="btn" id="yesButton">✔ YES</button>
+      </div>
+
+      <div class="no-btn-box" id="noContainer">
+        <button class="btn" id="noButton">✘ NO</button>
+      </div>
     </div>
+    
+    <div class="scribble">💘 u sure?</div>
+  </div>
 
-    <!-- Custom Confirmation Modal -->
-    <div id="confirmationModal">
-        <h2>Weh? Talaga ba? I love you!!!!!</h2>
-        <button id="confirmButton" onClick="proceedToLink()">Yes, Let's go!</button>
+  <div id="confirmationModal" class="modal">
+    <div class="modal-note">
+      <h2>weh? talaga ba?</h2>
+      <p>i love you!!!!! 🥺💌</p>
+      <div style="font-size: 2.8rem; line-height: 1.4;">💞💞💞</div>
+      <button class="lets-go-btn" id="confirmBtn">yes, let's go!</button>
     </div>
+  </div>
 
-    <script>
-        let flag = 1;
+  <script>
+    (function() {
+      const noContainer = document.getElementById('noContainer');
+      const noButton = document.getElementById('noButton');
+      const yesContainer = document.getElementById('yesContainer');
+      const yesButton = document.getElementById('yesButton');
+      
+      const area = document.querySelector('.button-area');
+      
+      function runAway() {
+        if (!area || !noContainer) return;
 
-        function f1() {
-            document.getElementById('confirmationModal').style.display = 'block';
+        const areaRect = area.getBoundingClientRect();
+        const noRect = noContainer.getBoundingClientRect();
+
+        const btnWidth = noRect.width || 160;
+        const btnHeight = noRect.height || 80;
+
+        const maxLeft = areaRect.width - btnWidth - 5;
+        const minLeft = 10;
+        
+        const minTop = -15;
+        const maxTop = areaRect.height - btnHeight + 10;
+
+        let newLeft = Math.floor(Math.random() * (maxLeft - minLeft + 1) + minLeft);
+        let newTop = Math.floor(Math.random() * (maxTop - minTop + 1) + minTop);
+
+        let safeDistance = 140;
+        let attempts = 0;
+        while (attempts < 5) {
+          const yesLeft = 0;
+          if (Math.abs(newLeft - yesLeft) < safeDistance && newLeft < yesLeft + 100) {
+            newLeft = Math.min(maxLeft, newLeft + 90);
+          }
+          if (newLeft + btnWidth > areaRect.width - 10) {
+            newLeft = areaRect.width - btnWidth - 15;
+          }
+          if (newLeft < minLeft) newLeft = minLeft + 15;
+          attempts++;
         }
 
-        function proceedToLink() {
-            window.location.href = "Card/card.html";
-        }
+        noContainer.style.left = newLeft + 'px';
+        noContainer.style.top = newTop + 'px';
+        noContainer.style.right = 'auto';
+        
+        noButton.style.transform = 'scale(0.95)';
+        setTimeout(() => { noButton.style.transform = 'scale(1)'; }, 120);
+      }
 
-        function f() {
-            let Bn = document.getElementById("Bn");
-            let positions = [
-                { top: "364px", left: "300px" },
-                { top: "476px", left: "78px" },
-                { top: "358px", left: "147px" },
-                { top: "490px", left: "134px" },
-                { top: "234px", left: "150px" },
-                { top: "441px", left: "245px" },
-                { top: "345px", left: "158px" },
-                { top: "390px", left: "165px" },
-                { top: "231px", left: "349px" },
-                { top: "123px", left: "289px" },
-                { top: "259px", left: "109px" },
-                { top: "300px", left: "170px" },
-                { top: "267px", left: "120px" },
-                { top: "126px", left: "170px" },
-                { top: "298px", left: "347px" },
-                { top: "345px", left: "165px" }
-            ];
-            
-            Bn.style.top = positions[flag - 1].top;
-            Bn.style.left = positions[flag - 1].left;
-            flag = (flag % positions.length) + 1;
+      if (noButton) {
+        noButton.addEventListener('mouseenter', runAway);
+        noButton.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          runAway();
+        });
+        
+        noButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          runAway();
+          yesButton.style.transform = 'scale(1.1)';
+          yesButton.style.background = '#ffe0e0';
+          setTimeout(() => {
+            yesButton.style.transform = 'scale(1)';
+            yesButton.style.background = '#ffd3d3';
+          }, 200);
+        });
+      }
+
+      const modal = document.getElementById('confirmationModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const confirmBtn = document.getElementById('confirmBtn');
+
+      function openModal() {
+        if (modal) {
+          modal.style.display = 'flex';
+          yesButton.style.background = '#ffb3b3';
         }
-    </script>
+      }
+
+      function closeModal() {
+        if (modal) modal.style.display = 'none';
+      }
+
+      yesButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal();
+      });
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeModal();
+        });
+      }
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      function proceedToCard() {
+        confirmBtn.innerText = 'opening... 💌';
+        confirmBtn.disabled = true;
+        
+        setTimeout(() => {
+          closeModal();
+          alert('💖 yay! see u on our date! (card.html would open) 💖');
+          confirmBtn.innerText = 'yes, let\'s go!';
+          confirmBtn.disabled = false;
+        }, 400);
+      }
+
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', proceedToCard);
+      }
+
+      window.addEventListener('load', function() {
+        if (area && noContainer) {
+          const areaRect = area.getBoundingClientRect();
+          noContainer.style.left = (areaRect.width - 200) + 'px';
+          noContainer.style.top = '0px';
+          noContainer.style.right = 'auto';
+        }
+        yesContainer.style.left = '0%';
+        yesContainer.style.top = '0';
+      });
+
+      window.addEventListener('resize', function() {
+        if (noContainer && area) {
+          let areaRect = area.getBoundingClientRect();
+          let noRect = noContainer.getBoundingClientRect();
+          if (noRect.right > areaRect.right - 10) {
+            noContainer.style.left = (areaRect.width - noRect.width - 20) + 'px';
+          }
+        }
+      });
+
+      yesButton.addEventListener('mouseenter', function() {
+        yesButton.style.background = '#ffc2c2';
+      });
+      yesButton.addEventListener('mouseleave', function() {
+        yesButton.style.background = '#ffd3d3';
+      });
+
+    })();
+  </script>
+
 </body>
 </html>
