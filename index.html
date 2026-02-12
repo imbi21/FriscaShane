@@ -321,6 +321,7 @@
                 yesButton.style.background = '#ffd3d3';
             }, 200);
         }
+
         function openModal() {
             if (modal) {
                 modal.style.display = 'flex';
@@ -331,15 +332,17 @@
         function closeModal() {
             if (modal) modal.style.display = 'none';
         }
+
         function proceedToCard() {
             const confirmBtn = document.getElementById('confirmBtn');
             confirmBtn.innerText = 'opening... 💌';
             confirmBtn.disabled = true;
             
             setTimeout(() => {
-                window.location.href = "Card/card.html"; 
+                window.location.href = "Card/card.html";
             }, 400);
         }
+
         window.addEventListener('load', function() {
             if (noContainer) {
                 noContainer.style.left = '65%';
@@ -350,4 +353,3 @@
     </script>
 </body>
 </html>
-
