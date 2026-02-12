@@ -274,6 +274,9 @@
       <p>i love you!!!!! 🥺💌</p>
       <div style="font-size: 2.8rem; line-height: 1.4;">💞💞💞</div>
       <button class="lets-go-btn" id="confirmBtn">yes, let's go!</button>
+      <div>
+        <span class="close-small" id="closeModalBtn">maybe later..</span>
+      </div>
     </div>
   </div>
 
@@ -384,10 +387,7 @@
         confirmBtn.disabled = true;
         
         setTimeout(() => {
-          closeModal();
-          alert('💖 yay! see u on our date! (card.html would open) 💖');
-          confirmBtn.innerText = 'yes, let\'s go!';
-          confirmBtn.disabled = false;
+          window.location.href = 'card/card.html';
         }, 400);
       }
 
@@ -425,6 +425,5 @@
 
     })();
   </script>
-
 </body>
 </html>
