@@ -700,17 +700,16 @@
     z-index: 20;
   }
 
-  /* ----- SMALLER LETTER INSIDE ENVELOPE ----- */
   .card {
     position: absolute;
-    width: 280px;        /* reduced from 330px */
-    height: 150px;        /* reduced from 200px */
+    width: 280px;
+    height: 150px;
     background: #fff9e6;
     background-image: radial-gradient(circle at 20% 30%, rgba(255,220,200,0.2) 2px, transparent 2px), 
                       radial-gradient(circle at 80% 70%, rgba(200,160,140,0.15) 1px, transparent 2px);
     background-size: 30px 30px, 20px 20px;
-    top: 40px;            /* adjusted to stay centered */
-    left: 40px;           /* centered inside 360px envelope: (360-280)/2 = 40px */
+    top: 40px;
+    left: 40px;
     box-shadow: -8px 8px 20px rgba(80, 40, 20, 0.15);
     border-radius: 14px 14px 10px 10px;
     z-index: 15;
@@ -730,7 +729,7 @@
     border: 3px solid #9e6d5e;
     border-style: dotted;
     border-radius: 8px;
-    width: 246px;        /* scaled proportionally */
+    width: 246px;
     height: 124px;
     left: 14px;
     top: 10px;
@@ -741,7 +740,7 @@
 
   .text {
     font-family: 'Brush Script MT', 'cursive', 'Segoe Script', sans-serif;
-    font-size: 28px;      /* reduced */
+    font-size: 28px;
     font-weight: 600;
     text-align: center;
     line-height: 1.2;
@@ -754,7 +753,7 @@
 
   .fancy-name {
     display: block;
-    font-size: 36px;      /* reduced */
+    font-size: 36px;
     font-weight: bold;
     background: linear-gradient(145deg, #b34141, #8e2c3b);
     -webkit-background-clip: text;
@@ -768,7 +767,7 @@
 
   .heart {
     background-color: #d62828;
-    height: 20px !important;    /* slightly smaller */
+    height: 20px !important;
     width: 20px !important;
     transform: rotate(-45deg);
     box-shadow: 0 4px 8px rgba(160, 30, 30, 0.4);
@@ -865,7 +864,7 @@
   }
 
   .container:hover .card {
-    top: -70px !important;          /* adjusted for smaller card */
+    top: -70px !important;
     transform: rotateX(4deg) scale(1.03);
     box-shadow: -12px 20px 30px rgba(80, 30, 10, 0.3);
   }
@@ -886,7 +885,6 @@
     50% { opacity: 0.9; transform: scale(1.4); }
   }
 
-  /* ensure card is flex column and centered */
   .card {
     display: flex !important;
     flex-direction: column !important;
@@ -1250,13 +1248,13 @@
     $(document).ready(function() {
       function cardUp() {
         $(".card").stop(true).animate({
-          top: "-70px"              // adjusted for smaller card
+          top: "-70px"
         }, {
           duration: 450,
           easing: "swing",
           step: function(now, fx) {
             if (fx.prop === "top") {
-              let progress = (now + 70) / 110;  // adjusted range
+              let progress = (now + 70) / 110;
               let rotateValue = progress * 4;
               $(this).css('transform', 'rotateX(' + rotateValue + 'deg) scale(1.03)');
             }
@@ -1266,7 +1264,7 @@
 
       function cardDown() {
         $(".card").stop(true).animate({
-          top: "40px"               // matches new top position
+          top: "40px"
         }, {
           duration: 450,
           easing: "swing",
