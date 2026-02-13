@@ -20,6 +20,7 @@
             padding: 2rem 1.5rem;
             margin: 0;
             color: #3a2c2f;
+            overflow:hidden;
         }
 
         .paper {
@@ -31,6 +32,7 @@
             padding: 2.8rem 2rem 3rem;
             position: relative;
             transition: all 0.15s;
+            z-index:5;
         }
 
         .paper:after {
@@ -50,7 +52,7 @@
             letter-spacing: -1.5px;
             color: #97242c;
             margin-bottom: 0.5rem;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Georgia', serif;
             text-shadow: 2px 2px 0 #ffd8d6;
             line-height: 1.1;
             border-bottom: 3px dotted #e6a8a8;
@@ -74,7 +76,6 @@
             max-width: 100%;
             height: auto;
             border: 2px solid #b95b5b;
-            image-rendering: crisp-edges;
         }
 
         .button-area {
@@ -82,11 +83,7 @@
             width: 100%;
             min-height: 130px;
             margin-top: 2.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5px;
+            padding:0 5px;
         }
 
         .yes-btn-box, .no-btn-box {
@@ -95,17 +92,10 @@
             transition: all 0.2s ease;
         }
 
-        .yes-btn-box {
-            left: 0%;
-            top: 0;
-        }
-
         .no-btn-box {
             position: absolute;
-            left: auto;
             right: 0;
             top: 10px;
-            transition: left 0.18s ease-out, top 0.18s ease-out, right 0.18s ease-out;
         }
 
         .btn {
@@ -115,35 +105,15 @@
             font-size: 1.9rem;
             font-weight: 700;
             padding: 1rem 2.4rem;
-            font-family: 'Courier New', 'Georgia', monospace;
-            text-transform: uppercase;
             letter-spacing: 3px;
             box-shadow: 8px 8px 0 #a14646;
             cursor: pointer;
             transition: 0.05s linear;
-            border-radius: 0px;
-            word-break: keep-all;
         }
 
         .btn:active {
             transform: translate(6px, 6px);
             box-shadow: 2px 2px 0 #a14646;
-        }
-
-        .yes-btn-box .btn {
-            background: #ffd3d3;
-            border-color: #b33b3b;
-            box-shadow: 8px 8px 0 #863333;
-            color: #4a1a1a;
-        }
-
-        .no-btn-box .btn {
-            background: #ead7d1;
-            border-color: #8f6b6b;
-            box-shadow: 6px 6px 0 #5e4545;
-            color: #2c1e1e;
-            font-size: 1.8rem;
-            padding: 1rem 2rem;
         }
 
         .doodle-heart {
@@ -172,184 +142,201 @@
             width: 90%;
             box-shadow: 18px 18px 0 rgba(90, 40, 40, 0.2);
             text-align: center;
-            position: relative;
             transform: rotate(0.8deg);
-        }
-
-        .modal-note h2 {
-            font-size: 2.6rem;
-            font-family: 'Georgia', serif;
-            color: #a12f2f;
-            margin-bottom: 0.5rem;
-            border-bottom: 2px dashed #d49b9b;
-            display: inline-block;
-            padding-bottom: 6px;
-        }
-
-        .modal-note p {
-            font-size: 1.7rem;
-            margin: 1.8rem 0 1.2rem;
-            font-style: italic;
-            background: #ffe9e9;
-            padding: 1rem;
-            border-left: 10px solid #d67a7a;
-            font-family: 'Courier New', monospace;
         }
 
         .lets-go-btn {
             background: #d67272;
-            border: 4px solid #420e0e;
             color: white;
             font-size: 1.9rem;
             padding: 1rem 2.8rem;
-            font-weight: bold;
-            letter-spacing: 4px;
-            border: none;
-            border-bottom: 10px solid #562424;
             cursor: pointer;
-            transition: 0.04s;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
             margin-top: 10px;
         }
 
-        .lets-go-btn:active {
-            border-bottom-width: 3px;
-            transform: translateY(7px);
+        .hearts span{
+            position:fixed;
+            bottom:-20px;
+            font-size:20px;
+            animation:floatUp 6s linear infinite;
+            pointer-events:none;
+            z-index:1;
         }
 
-        .close-small {
-            color: #765454;
-            margin-top: 1rem;
-            display: inline-block;
-            border-bottom: 2px dotted #ad7a7a;
-            cursor: pointer;
-            font-size: 1.2rem;
+        @keyframes floatUp{
+            0%{transform:translateY(0);opacity:0;}
+            30%{opacity:1;}
+            100%{transform:translateY(-110vh);opacity:0;}
         }
 
-        .scribble {
-            position: absolute;
-            bottom: 15px;
-            right: 25px;
-            font-size: 28px;
-            color: #c28b8b;
-            transform: rotate(-10deg);
-            opacity: 0.5;
+        @keyframes shake{
+            0%{transform:translate(0);}
+            25%{transform:translate(-4px);}
+            50%{transform:translate(4px);}
+            75%{transform:translate(-4px);}
+            100%{transform:translate(0);}
         }
+        .firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: explode 900ms ease-out forwards;
+}
 
-        @media (max-width: 550px) {
-            .paper { padding: 1.8rem; }
-            h1 { font-size: 2rem; }
-            .btn { font-size: 1.5rem; padding: 0.8rem 1.6rem; }
-        }
+@keyframes explode {
+    0% {
+        transform: translate(0,0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+
+
+
     </style>
 </head>
+
 <body>
-    <div class="paper">
-        <h1>Can I date u?</h1>
-        <span class="doodle-heart">❤️</span><span class="doodle-heart" style="transform: rotate(-12deg);">❤️</span>
 
-        <div class="gif-frame">
-            <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif" alt="puss in boots eyes" />
-        </div>
+<div class="paper">
+    <h1>Can I date you?</h1>
+    <span class="doodle-heart">❤️</span>
+    <span class="doodle-heart" style="transform: rotate(-12deg);">❤️</span>
 
-        <div class="button-area">
-            <div class="yes-btn-box" id="yesContainer">
-                <button class="btn" id="yesButton" onclick="openModal()">✔ YES</button>
-            </div>
-
-            <div class="no-btn-box" id="noContainer">
-                <button class="btn" id="noButton" onmouseover="runAway()" onclick="blockNo()">✘ NO</button>
-            </div>
-        </div>
-        
-        <div class="scribble">💘 u sure?</div>
+    <div class="gif-frame">
+        <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif">
     </div>
 
-    <div id="confirmationModal" class="modal">
-        <div class="modal-note">
-            <h2>weh? talaga ba?</h2>
-            <p>i love you!!!!! 🥺💌</p>
-            <div style="font-size: 2.8rem; line-height: 1.4;">💞💞💞</div>
-            <button class="lets-go-btn" id="confirmBtn" onclick="proceedToCard()">yes, let's go!</button>
+    <div class="button-area">
+        <div class="yes-btn-box" id="yesContainer">
+            <button class="btn" id="yesButton">✔ YES</button>
+        </div>
+
+        <div class="no-btn-box" id="noContainer">
+            <button class="btn" id="noButton">✘ NO</button>
         </div>
     </div>
+</div>
 
-    <script>
-        let flag = 1;
-        const noButton = document.getElementById('noButton');
-        const noContainer = document.getElementById('noContainer');
-        const yesButton = document.getElementById('yesButton');
-        const modal = document.getElementById('confirmationModal');
+<div id="confirmationModal" class="modal">
+    <div class="modal-note">
+        <h2>weh? talaga ba?</h2>
+        <p>I love you!!!!! 🥺💌</p>
+        <button class="lets-go-btn" id="confirmBtn">yes, let's go!</button>
+    </div>
+</div>
 
-        const positions = [
-            { top: "10px", left: "70%" },
-            { top: "40px", left: "20%" },
-            { top: "-20px", left: "50%" },
-            { top: "60px", left: "10%" },
-            { top: "-10px", left: "80%" },
-            { top: "30px", left: "30%" },
-            { top: "0px", left: "60%" },
-            { top: "50px", left: "40%" },
-            { top: "20px", left: "15%" },
-            { top: "-15px", left: "75%" },
-            { top: "45px", left: "55%" },
-            { top: "5px", left: "25%" },
-            { top: "-25px", left: "65%" },
-            { top: "15px", left: "85%" },
-            { top: "35px", left: "45%" },
-            { top: "-5px", left: "35%" }
-        ];
+<div class="hearts"></div>
 
-        function runAway() {
-            if (!noContainer) return;
-            let randomIndex = Math.floor(Math.random() * positions.length);
-            noContainer.style.top = positions[randomIndex].top;
-            noContainer.style.left = positions[randomIndex].left;
-            noContainer.style.right = 'auto';
-            
-            noButton.style.transform = 'scale(0.95)';
-            setTimeout(() => { noButton.style.transform = 'scale(1)'; }, 120);
-        }
+<script>
+let yesScale=1;
 
-        function blockNo() {
-            runAway();
-            yesButton.style.transform = 'scale(1.1)';
-            yesButton.style.background = '#ffe0e0';
-            setTimeout(() => {
-                yesButton.style.transform = 'scale(1)';
-                yesButton.style.background = '#ffd3d3';
-            }, 200);
-        }
+const noButton=document.getElementById('noButton');
+const noContainer=document.getElementById('noContainer');
+const yesButton=document.getElementById('yesButton');
+const modal=document.getElementById('confirmationModal');
 
-        function openModal() {
-            if (modal) {
-                modal.style.display = 'flex';
-                yesButton.style.background = '#ffb3b3';
-            }
-        }
+function runAway(){
+document.body.style.animation="shake 0.2s";
 
-        function closeModal() {
-            if (modal) modal.style.display = 'none';
-        }
+const btnWidth=noContainer.offsetWidth;
+const btnHeight=noContainer.offsetHeight;
 
-        function proceedToCard() {
-            const confirmBtn = document.getElementById('confirmBtn');
-            confirmBtn.innerText = 'opening... 💌';
-            confirmBtn.disabled = true;
-            
-            setTimeout(() => {
-                window.location.href = "Card/card.html";
-            }, 400);
-        }
+const maxX=window.innerWidth-btnWidth-20;
+const maxY=window.innerHeight-btnHeight-20;
 
-        window.addEventListener('load', function() {
-            if (noContainer) {
-                noContainer.style.left = '65%';
-                noContainer.style.top = '10px';
-                noContainer.style.right = 'auto';
-            }
-        });
-    </script>
+const randomX=Math.random()*maxX;
+const randomY=Math.random()*maxY;
+
+noContainer.style.position="fixed";
+noContainer.style.left=randomX+"px";
+noContainer.style.top=randomY+"px";
+noContainer.style.right="auto";
+
+yesScale+=0.12;
+yesButton.style.transform=`scale(${yesScale})`;
+
+setTimeout(()=>{document.body.style.animation="";},200);
+}
+
+noButton.addEventListener("mouseover",runAway);
+noButton.addEventListener("touchstart",runAway);
+noButton.addEventListener("click",runAway);
+
+yesButton.addEventListener("click",(e)=>{
+
+new Audio("https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3").play();
+
+modal.style.display="flex";
+
+let rect=yesButton.getBoundingClientRect();
+let x=rect.left+rect.width/2;
+let y=rect.top+rect.height/2;
+
+createFirework(x,y);
+
+setTimeout(()=>createFirework(x+60,y-40),200);
+setTimeout(()=>createFirework(x-60,y-40),350);
+});
+
+
+window.onclick=function(e){
+if(e.target===modal){
+modal.style.display="none";
+}
+}
+
+document.getElementById("confirmBtn").addEventListener("click",function(){
+this.innerText="opening... 💌";
+this.disabled=true;
+setTimeout(()=>{
+window.location.href="Card/card.html";
+},1000);
+});
+
+setInterval(()=>{
+const heart=document.createElement("span");
+heart.innerText="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.querySelector(".hearts").appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},300);
+function createFirework(x, y){
+
+for(let i=0;i<60;i++){
+
+let particle=document.createElement("div");
+particle.className="firework";
+
+let angle=Math.random()*2*Math.PI;
+let radius=Math.random()*120;
+
+let moveX=Math.cos(angle)*radius+"px";
+let moveY=Math.sin(angle)*radius+"px";
+
+particle.style.left=x+"px";
+particle.style.top=y+"px";
+
+particle.style.setProperty("--x",moveX);
+particle.style.setProperty("--y",moveY);
+
+particle.style.background=`hsl(${Math.random()*360},100%,60%)`;
+
+document.body.appendChild(particle);
+
+setTimeout(()=>particle.remove(),900);
+}
+}
+
+</script>
+
 </body>
 </html>
