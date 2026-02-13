@@ -6,25 +6,52 @@
   <title>Our Love Story – Seamless Nightfall</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
     body {
       font-family: 'Cormorant Garamond', serif;
       overflow-x: hidden;
       background: #2c3845;
       transition: background 2s ease;
-      cursor: none;
     }
     body.night { background: #0a0c14; }
     body.loaded { transition: opacity 0.8s ease; }
 
+    /* ---------- CUSTOM CURSOR ---------- */
     #cursor {
-      position: fixed; width: 40px; height: 40px; pointer-events: none;
-      z-index: 9999; top: 0; left: 0;
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      transition: transform 0.12s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     #cursor .heart {
-      width: 30px; height: 30px;
+      width: 30px;
+      height: 30px;
       filter: drop-shadow(0 0 8px #ff4d88) drop-shadow(0 0 16px #ff99cc);
-      transform: translate(-50%, -50%);
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+    #cursor .arrow {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      filter: drop-shadow(0 0 6px #ffaaff);
+    }
+    body.clicking #cursor .heart {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    body.clicking #cursor .arrow {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .sparkle {
@@ -61,28 +88,68 @@
       backface-visibility: hidden;
     }
     .letter {
-      position: absolute; width: 92%; left: 4%; bottom: 8%;
-      background: rgba(255, 250, 242, 0.98);
-      backdrop-filter: blur(2px);
-      border-radius: 8px; padding: 40px; transform: translateY(0) scaleY(0);
-      transform-origin: bottom; transition: all 1.2s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      position: absolute;
+      width: 92%;
+      left: 4%;
+      bottom: 8%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0,0,0,0.06), transparent 70%),
+        radial-gradient(circle at 80% 60%, rgba(0,0,0,0.04), transparent 70%),
+        repeating-linear-gradient(
+          to bottom,
+          #fdf6e9 0px,
+          #fdf6e9 24px,
+          #e9dccb 25px
+        );
+      border-radius: 6px;
+      padding: 40px;
+      border: 1px solid #e8cdb5;
+      box-shadow:
+        0 6px 14px rgba(0,0,0,0.25),
+        inset 0 0 35px rgba(0,0,0,0.08),
+        inset 0 0 4px rgba(255,255,255,0.4);
+      transform: translateY(0) scaleY(0) rotateX(3deg);
+      transform-origin: bottom;
+      transition: all 1.3s ease;
+    }
+    .letter::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.15;
+      pointer-events: none;
     }
     .letter::before {
-      content: ""; position: absolute; top: 0; bottom: 0;
-      left: 25px; width: 2px; background: #f4a3b8;
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 6px;
+      box-shadow: inset 0 0 40px rgba(120,80,50,0.25), inset 0 0 80px rgba(80,50,20,0.15);
+      pointer-events: none;
     }
-    .text { 
-      margin-left: 20px; font-size: 18px; line-height: 30px; 
-      color: #3a2f2f; white-space: pre-wrap; 
+    .text {
+      margin-left: 20px;
+      font-size: 18px;
+      line-height: 30px;
+      color: #2a1f1f;
+      text-shadow: 0 0 0.5px rgba(0,0,0,0.2), 0 0 1px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
     }
+
     .signature {
       margin-left: 20px; margin-top: 30px; font-family: 'Dancing Script', cursive;
       font-size: 28px; color: #e75480; opacity: 0;
       transition: opacity 1.5s ease;
     }
     .open .flap { transform: rotateX(-180deg); }
-    .open .letter { transform: translateY(-180px) scaleY(1); }
+    .open .letter {
+      transform: translateY(-180px) scaleY(1) rotateX(0deg);
+    }
+    .open .letter{
+      animation:agePaper 18s forwards linear;
+    }
     .open .envelope { opacity: 0; }
 
     .section {
@@ -108,24 +175,17 @@
       max-width: 800px; 
       width: 100%;
     }
-
-    #chapter2 {
-      background: linear-gradient(to bottom, #4a4e69, #3a4055, #2a2f44);
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 -20px 40px rgba(0,0,0,0.2) inset;
-    }
-
+    
+    /* ---------- COMPRESSED CHAPTER 3 – letter & flower tight but no collision ---------- */
     #chapter3 {
-      background: radial-gradient(circle at 50% 30%, #2c3845, #0b0e14);
       position: relative;
       box-shadow: 0 0 80px rgba(0,0,0,0.8) inset, 0 -10px 60px rgba(255,200,220,0.2);
       overflow: hidden;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 60px 20px;
+      padding: 60px 20px 40px;  /* reduced bottom padding to lift flower */
       z-index: 3;
     }
 
@@ -144,51 +204,69 @@
     #chapter3 h2 {
       animation: floatGlow 4s ease-in-out infinite alternate;
       text-shadow: 0 0 15px rgba(255,220,240,0.9);
-      margin-bottom: 20px;
+      margin-bottom: 0px;           /* reduce gap before text */
       position: relative;
       z-index: 5;
     }
+
+    /* condensed text block – narrower, closer to flower */
+    .chapter3-text {
+      max-width: 580px !important;   /* narrower than default */
+      margin-bottom: 5px !important; /* barely any space before flower */
+      font-size: 21px;
+      line-height: 1.6;
+    }
+
     @keyframes floatGlow {
       0% { transform: translateY(0); text-shadow: 0 0 10px #fff, 0 0 20px #ffaacc; }
       100% { transform: translateY(-5px); text-shadow: 0 0 25px #ffb6c1, 0 0 45px #ff99cc; }
     }
 
+    /* castle container now smaller & shifted up */
     .castle-container {
+      position: relative;
+      width: min(460px, 80vw);      /* slightly smaller */
+      height: min(380px, 70vw);      /* shorter height to pull flower up */
       display: flex;
       justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin: 20px auto 10px;
-      position: relative;
-      z-index: 10;
+      align-items: flex-start;       /* align top to avoid extra bottom space */
+      margin-top: -5px;              /* negative margin to raise whole assembly */
     }
 
     #castle {
       position: relative;
-      width: min(520px, 85vw);
-      height: min(520px, 85vw);
-      background: transparent;
+      width: 100%;
+      height: 100%;
+    }
+
+    .castle-scene {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;                 
+      width: 100%;
+      position: relative;
       overflow: visible;
-      margin: 0 auto;
+      margin-top: 0;
     }
 
     #castle #table {
       position: absolute;
       left: 50%;
-      top: 132%;
-      transform: translate(-50%, -50%) scaleY(0.225);
-      width: 400px;
-      height: 400px;
+      top: 130%;                     /* raised from 132% to 115% */
+      transform: translate(-50%, -50%) scaleY(0.2);
+      width: 380px;
+      height: 380px;
       background: radial-gradient(#a3727e, #af7279, #a16674);
       border-radius: 100%;
-      border-bottom: 80px solid #623c53;
+      border-bottom: 70px solid #623c53;
       transform-origin: center;
     }
 
     .shade-wrap { 
       position: absolute; 
       left: 50%; 
-      top: 100%; 
+      top: 92%;                      /* raised overall shade assembly */
       transform: translate(-50%, -50%);
       width: 200px; 
       height: 400px; 
@@ -197,7 +275,7 @@
     #shade-main {
       position: absolute; 
       left: 20px;  
-      top: 100px;   
+      top: 80px;                     /* lifted inside wrap */
       width: 160px; 
       height: 250px;
       border-top: 1px solid rgba(255,255,255,0.5); 
@@ -226,7 +304,7 @@
     #shade-main-reflections {
       position: absolute;
       left: 20px;
-      top: 100px;
+      top: 80px;                     /* match raised position */
       width: 160px; 
       height: 250px;
       border-top-left-radius: 50% 30%; 
@@ -260,14 +338,16 @@
       filter: blur(5px);
     }
 
-  #flower-wrap { 
-  position: absolute;
-  top: 10px;
-  left: 0px;
-  cursor: pointer;
-  z-index: 100;
-  pointer-events: auto; 
-}
+    /* FLOWER – moved up and left a bit to sit just below text */
+    #flower-wrap { 
+      position: absolute;
+      top: 5px;                    /* drastically raised to bring flower under text */
+      left: 5px;                   /* slight left shift */
+      cursor: pointer;
+      z-index: 100;
+      pointer-events: auto; 
+      transform: scale(0.95);        /* slightly smaller to avoid edge */
+    }
     
     #flower-wrap * {
       pointer-events: none;
@@ -314,10 +394,17 @@
     }
 
     #chapter3-dust {
-      position: absolute; width: 100%; height: 100%;
-      pointer-events: none; overflow: hidden; top: 0; left: 0;
+      position: absolute;
+      top: 100%;
+      left: 80%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 80%;
+      pointer-events: none;
+      overflow: hidden;
       z-index: 5;
     }
+
     .dustDef {
       position: absolute; background: white; border-radius: 50%;
       box-shadow: 0 0 4px 2px rgba(255,255,240,0.8); opacity: 0;
@@ -366,28 +453,6 @@
       transition: width 0.1s ease;
     }
 
-    .folder-hint {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      color: rgba(255, 255, 255, 0.8);
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-family: 'Dancing Script', cursive;
-      font-size: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 20px rgba(255, 200, 220, 0.3);
-      z-index: 1000;
-      pointer-events: none;
-    }
-
-    .folder-hint span {
-      color: #ff99cc;
-      font-weight: bold;
-    }
-
     @media (max-width: 600px) {
       .section { padding: 60px 20px; }
       .wrapper { width: 320px; height: 208px; }
@@ -395,11 +460,27 @@
       .text { font-size: 16px; line-height: 26px; margin-left: 15px; }
       .signature { font-size: 22px; }
       .text::before { left: 15px; }
-      #castle { width: min(400px, 95vw); height: min(400px, 95vw); }
-      #shade-main { left: 15px; top: 80px; width: 140px; height: 220px; }
-      #shade-main-reflections { left: 15px; top: 80px; width: 140px; height: 220px; }
-      #flower-wrap { transform: scale(0.85); left: -25px; top: 20px; }
-      .folder-hint { bottom: 20px; left: 20px; font-size: 16px; padding: 10px 20px; }
+      #castle { width: min(380px, 95vw); height: min(340px, 70vw); }
+      #shade-main { left: 15px; top: 70px; width: 140px; height: 220px; }
+      #shade-main-reflections { left: 15px; top: 70px; width: 140px; height: 220px; }
+      #flower-wrap { transform: scale(0.8); left: -30px; top: -40px; }
+    }
+
+    @keyframes flicker{
+      0%{opacity:.75;transform:scale(1);}
+      25%{opacity:.6;transform:scale(1.02);}
+      50%{opacity:.85;transform:scale(1);}
+      75%{opacity:.55;transform:scale(1.03);}
+      100%{opacity:.75;transform:scale(1);}
+    }
+    @keyframes agePaper{
+      0%{filter:sepia(0%) saturate(1);}
+      100%{filter:sepia(30%) saturate(0.85);}
+    }
+    @keyframes memoryPulse{
+      0%{transform:translateY(-180px) scale(1);}
+      50%{transform:translateY(-180px) scale(1.02);}
+      100%{transform:translateY(-180px) scale(1);}
     }
   </style>
 </head>
@@ -408,15 +489,14 @@
     <svg class="heart" viewBox="0 0 32 29">
       <path d="M23.6,0c-2.8,0-5.2,1.5-6.6,3.7C15.6,1.5,13.2,0,10.4,0C4.7,0,0,4.7,0,10.4c0,8,16,18.6,16,18.6s16-10.6,16-18.6C32,4.7,27.3,0,23.6,0z" fill="#ff4d88"/>
     </svg>
+    <svg class="arrow" viewBox="0 0 24 24" width="28" height="28">
+      <path d="M7 10l5 5 5-5H7z" fill="#ffb6c1" />
+    </svg>
   </div>
 
   <div class="moon"></div>
   <div class="progress-bar"></div>
   
-  <div class="folder-hint">
-    📁 FriscaShane / <span>Card</span> / Garden
-  </div>
-
   <div class="scene">
     <div class="wrapper" id="wrapper" role="button" aria-label="Open love letter" tabindex="0">
       <div class="letter" id="letter">
@@ -429,41 +509,45 @@
   </div>
 
   <div class="section" id="chapter2">
-    <h2>Chapter 2 — The Future</h2>
+    <h2>The Future</h2>
     <div>When the stars awaken, I still choose you. In quiet moments. In loud laughter. In every lifetime.</div>
   </div>
 
   <div class="section" id="chapter3">
     <h2>Chapter 3 — Always</h2>
-    <div style="max-width: 700px; margin-bottom: 10px;">
-      Beyond the moonlight, beyond the dawn, our story continues — soft, infinite, and eternal.
+    <div class="chapter3-text" style="max-width: 580px; margin-bottom: 5px;">
+      No matter how far we wander, I’ll always find my way back to you.  
+      <br><br>
+      In quiet mornings, in silly little jokes, in every smile we share — you make every day feel brighter.  
+      <br><br>
+      And when tomorrow comes, I’ll still be choosing you, just like I do today.
     </div>
     
-    <div class="castle-container">
-      <div id="castle">
-        <div id="table"></div>
-        <div class="shade-wrap hover-animation" id="main">
-          <div id="flower-wrap" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;">
-            <div id="stem"></div>
-            <div id="petal1"></div><div id="petal2"></div><div id="petal3"></div>
-            <div id="petal4"></div><div id="petal5"></div>
-            <div id="falling-petal"></div>
-            <div id="leaf1"></div><div id="leaf2"></div>
+    <div class="castle-scene">
+      <div class="castle-container">
+        <div id="castle">
+          <div id="table"></div>
+          <div class="shade-wrap hover-animation" id="main">
+             <div id="flower-wrap" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;">
+              <div id="stem"></div>
+              <div id="petal1"></div><div id="petal2"></div><div id="petal3"></div>
+              <div id="petal4"></div><div id="petal5"></div>
+              <div id="falling-petal"></div>
+              <div id="leaf1"></div><div id="leaf2"></div>
             </div>
-        </div>
-        <div class="shade-wrap" id="sub" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;">
-  <div id="shade-main-reflections"></div>
-  <div id="shade-main">
-    <div id="shade-handle-big"></div>
-    <div id="shade-handle-small"></div>
-    <div id="bottom-shade" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;"></div>
-  </div>
-</div>
+          </div>
+          <div class="shade-wrap" id="sub" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;">
+            <div id="shade-main-reflections"></div>
+            <div id="shade-main">
+              <div id="shade-handle-big"></div>
+              <div id="shade-handle-small"></div>
+              <div id="bottom-shade" onclick="window.location.href='Garden/garden.html'" style="cursor: pointer; pointer-events: auto;"></div>
+            </div>
+          </div>
+          <div id="chapter3-dust"></div>
         </div>
       </div>
     </div>
-    
-    <div id="chapter3-dust"></div>
   </div>
 
   <audio id="bgMusic" loop preload="auto">
@@ -481,6 +565,16 @@
       const music = document.getElementById('bgMusic');
       const body = document.body;
       const chapter3 = document.getElementById('chapter3');
+      const letter = document.querySelector(".letter");
+      const envelope = document.querySelector(".envelope");
+
+      // envelope click dust (optional)
+      if (envelope) {
+        envelope.addEventListener("click",(e)=>{
+          let rect = envelope.getBoundingClientRect();
+          // simple dust simulation (reusing createDust logic but quick)
+        });
+      }
 
       let opened = false;
       let starsCreated = false;
@@ -497,6 +591,10 @@
       }, { passive: true });
 
       body.classList.add('loaded');
+
+      document.addEventListener('mousedown', () => { body.classList.add('clicking'); });
+      document.addEventListener('mouseup', () => { body.classList.remove('clicking'); });
+      document.addEventListener('mouseleave', () => { body.classList.remove('clicking'); });
 
       let sparkleLastTime = 0;
       document.addEventListener('mousemove', (e) => {
@@ -522,7 +620,7 @@
         }
       });
 
-      const msg = `My love,\n\nEvery day with you feels warmer,\nbrighter, and magical.\n\nNo matter where life takes us,\nyou are my favorite place to return to.\n\nI'm so grateful for you.\nAlways.`;
+      const msg = `My love,\n\nIn your presence,\neach passing day feels warmer.\n\nEach moment shines brighter,\nand the world becomes a little more magical.\n\nNo matter where life may lead us,\nyou will forever remain\nthe place my heart calls home.\n`;
       let i = 0;
       function typeWriter() {
         if (i < msg.length) {
@@ -708,7 +806,6 @@
         if (!dustContainer) return;
         let animId = 1;
         const head = document.head;
-        const isMobile = window.innerWidth < 600;
 
         function createDust(x1, x2, y1, y2, sizeRatio, duration, delay) {
           const animName = `dustGlow${animId++}`;
