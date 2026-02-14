@@ -3,228 +3,46 @@
 <head>
     <title>will u go out w me Izca?</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #fde2e4;
-            font-family: 'Courier New', 'American Typewriter', 'Georgia', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem 1.5rem;
-            margin: 0;
-            color: #3a2c2f;
-            overflow:hidden;
-        }
-
-        .paper {
-            max-width: 700px;
-            width: 100%;
-            background: #fff9f2;
-            border: 2px solid #fbc4c0;
-            box-shadow: 12px 12px 0 #eec9cb;
-            padding: 2.8rem 2rem 3rem;
-            position: relative;
-            transition: all 0.15s;
-            z-index:5;
-        }
-
-        .paper:after {
-            content: "✧";
-            position: absolute;
-            top: -12px;
-            left: 40%;
-            font-size: 42px;
-            color: #dbb7b7;
-            transform: rotate(-8deg);
-            opacity: 0.7;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            color: #97242c;
-            margin-bottom: 0.5rem;
-            font-family: 'Georgia', serif;
-            text-shadow: 2px 2px 0 #ffd8d6;
-            line-height: 1.1;
-            border-bottom: 3px dotted #e6a8a8;
-            display: inline-block;
-            padding-bottom: 8px;
-        }
-
-        .gif-frame {
-            background: white;
-            padding: 1rem 1rem 0.8rem;
-            border: 2px solid #f3b5b1;
-            box-shadow: 6px 6px 0 #dba3a3;
-            display: inline-block;
-            margin: 1.8rem 0 1.2rem;
-            transform: rotate(-1deg);
-        }
-
-        img {
-            display: block;
-            width: 220px;
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #b95b5b;
-        }
-
-        .button-area {
-            position: relative;
-            width: 100%;
-            min-height: 130px;
-            margin-top: 2.2rem;
-            padding:0 5px;
-        }
-
-        .yes-btn-box, .no-btn-box {
-            position: relative;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .no-btn-box {
-            position: absolute;
-            right: 0;
-            top: 10px;
-        }
-
-        .btn {
-            background: #ffece5;
-            border: 4px solid #c15a5a;
-            color: #3e2828;
-            font-size: 1.9rem;
-            font-weight: 700;
-            padding: 1rem 2.4rem;
-            letter-spacing: 3px;
-            box-shadow: 8px 8px 0 #a14646;
-            cursor: pointer;
-            transition: 0.05s linear;
-        }
-
-        .btn:active {
-            transform: translate(6px, 6px);
-            box-shadow: 2px 2px 0 #a14646;
-        }
-
-        .doodle-heart {
-            font-size: 2.6rem;
-            display: inline-block;
-            margin: 0 4px;
-            transform: rotate(6deg);
-            color: #b34444;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(70, 40, 40, 0.4);
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
-
-        .modal-note {
-            background: #fffbf0;
-            border: 6px double #c26b6b;
-            padding: 2.5rem 2.2rem;
-            max-width: 550px;
-            width: 90%;
-            box-shadow: 18px 18px 0 rgba(90, 40, 40, 0.2);
-            text-align: center;
-            transform: rotate(0.8deg);
-        }
-
-        .lets-go-btn {
-            background: #d67272;
-            color: white;
-            font-size: 1.9rem;
-            padding: 1rem 2.8rem;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .hearts span{
-            position:fixed;
-            bottom:-20px;
-            font-size:20px;
-            animation:floatUp 6s linear infinite;
-            pointer-events:none;
-            z-index:1;
-        }
-
-        @keyframes floatUp{
-            0%{transform:translateY(0);opacity:0;}
-            30%{opacity:1;}
-            100%{transform:translateY(-110vh);opacity:0;}
-        }
-
-        @keyframes shake{
-            0%{transform:translate(0);}
-            25%{transform:translate(-4px);}
-            50%{transform:translate(4px);}
-            75%{transform:translate(-4px);}
-            100%{transform:translate(0);}
-        }
-        .firework {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    animation: explode 900ms ease-out forwards;
-}
-
-@keyframes explode {
-    0% {
-        transform: translate(0,0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--x), var(--y)) scale(0.3);
-        opacity: 0;
-    }
-}
-
-
-
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fde2e4;  font-family: 'Courier New', 'American Typewriter', 'Georgia', monospace;  display: flex;   flex-direction: column;    align-items: center;    justify-content: center;    min-height: 100vh;    padding: 2rem 1.5rem;    margin: 0;    color: #3a2c2f;    overflow:hidden;  }
+        .paper {   max-width: 700px;    width: 100%;    background: #fff9f2;    border: 2px solid #fbc4c0;    box-shadow: 12px 12px 0 #eec9cb;    padding: 2.8rem 2rem 3rem;    position: relative;    transition: all 0.15s;    z-index:5;  }
+        .paper:after {    content: "✧";    position: absolute;    top: -12px;    left: 40%;    font-size: 42px;    color: #dbb7b7;    transform: rotate(-8deg);    opacity: 0.7;   }
+        h1 {  font-size: 2.8rem;  font-weight: 600;  letter-spacing: -1.5px;  color: #97242c;  margin-bottom: 0.5rem;  font-family: 'Georgia', serif;  text-shadow: 2px 2px 0 #ffd8d6;  line-height: 1.1;  border-bottom: 3px dotted #e6a8a8;  display: inline-block;  padding-bottom: 8px;  }
+        .gif-frame { background: white; padding: 1rem 1rem 0.8rem; border: 2px solid #f3b5b1; box-shadow: 6px 6px 0 #dba3a3; display: inline-block; margin: 1.8rem 0 1.2rem; transform: rotate(-1deg);   }
+        img { display: block; width: 220px; max-width: 100%; height: auto; border: 2px solid #b95b5b;   }
+        .button-area { position: relative; width: 100%; min-height: 130px; margin-top: 2.2rem; padding:0 5px;  }
+        .yes-btn-box, .no-btn-box {  position: relative;  display: inline-block;  transition: all 0.2s ease; }
+        .no-btn-box {  position: absolute;  right: 0;  top: 10px;  }
+        .btn {  background: #ffece5;  border: 4px solid #c15a5a;  color: #3e2828;  font-size: 1.9rem;  font-weight: 700;  padding: 1rem 2.4rem;  letter-spacing: 3px;  box-shadow: 8px 8px 0 #a14646;  cursor: pointer;  transition: 0.05s linear;  }
+        .btn:active {  transform: translate(6px, 6px)  box-shadow: 2px 2px 0 #a14646; }
+        .doodle-heart { font-size: 2.6rem; display: inline-block; margin: 0 4px; transform: rotate(6deg); color: #b34444;  }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(70, 40, 40, 0.4); align-items: center; justify-content: center; z-index: 999;  }
+        .modal-note {  background: #fffbf0;  border: 6px double #c26b6b;  padding: 2.5rem 2.2rem;  max-width: 550px;  width: 90%;  box-shadow: 18px 18px 0 rgba(90, 40, 40, 0.2);  text-align: center;  transform: rotate(0.8deg);  }
+        .lets-go-btn {  background: #d67272;  color: white;  font-size: 1.9rem;  padding: 1rem 2.8rem;  cursor: pointer;  margin-top: 10px;  }
+        .hearts span{  position:fixed;  bottom:-20px;  font-size:20px;  animation:floatUp 6s linear infinite  pointer-events:none;  z-index:1;   }
+        @keyframes floatUp{  0%{transform:translateY(0);opacity:0;}  30%{opacity:1;}  100%{transform:translateY(-110vh);opacity:0;}  }
+        @keyframes shake{  0%{transform:translate(0);}  25%{transform:translate(-4px);}  50%{transform:translate(4px);}  75%{transform:translate(-4px);}  100%{transform:translate(0);}  }
+        .firework { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 9999; animation: explode 900ms ease-out forwards; }
+         @keyframes explode { 0% {  transform: translate(0,0) scale(1);  opacity: 1;  }  100% {  transform: translate(var(--x), var(--y)) scale(0.3);  opacity: 0 }
     </style>
 </head>
-
 <body>
-
 <div class="paper">
     <h1>Can I date you?</h1>
     <span class="doodle-heart">❤️</span>
     <span class="doodle-heart" style="transform: rotate(-12deg);">❤️</span>
-
     <div class="gif-frame">
         <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif">
     </div>
-
     <div class="button-area">
         <div class="yes-btn-box" id="yesContainer">
             <button class="btn" id="yesButton">✔ YES</button>
         </div>
-
         <div class="no-btn-box" id="noContainer">
             <button class="btn" id="noButton">✘ NO</button>
         </div>
     </div>
 </div>
-
 <div id="confirmationModal" class="modal">
     <div class="modal-note">
         <h2>weh? talaga ba?</h2>
@@ -232,12 +50,9 @@
         <button class="lets-go-btn" id="confirmBtn">yes, let's go!</button>
     </div>
 </div>
-
 <div class="hearts"></div>
-
 <script>
 let yesScale=1;
-
 const noButton=document.getElementById('noButton');
 const noContainer=document.getElementById('noContainer');
 const yesButton=document.getElementById('yesButton');
@@ -245,54 +60,36 @@ const modal=document.getElementById('confirmationModal');
 
 function runAway(){
 document.body.style.animation="shake 0.2s";
-
 const btnWidth=noContainer.offsetWidth;
 const btnHeight=noContainer.offsetHeight;
-
 const maxX=window.innerWidth-btnWidth-20;
 const maxY=window.innerHeight-btnHeight-20;
-
 const randomX=Math.random()*maxX;
 const randomY=Math.random()*maxY;
-
 noContainer.style.position="fixed";
 noContainer.style.left=randomX+"px";
 noContainer.style.top=randomY+"px";
 noContainer.style.right="auto";
-
 yesScale+=0.12;
 yesButton.style.transform=`scale(${yesScale})`;
-
 setTimeout(()=>{document.body.style.animation="";},200);
 }
-
 noButton.addEventListener("mouseover",runAway);
 noButton.addEventListener("touchstart",runAway);
 noButton.addEventListener("click",runAway);
-
 yesButton.addEventListener("click",(e)=>{
-
 new Audio("https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3").play();
-
 modal.style.display="flex";
-
 let rect=yesButton.getBoundingClientRect();
 let x=rect.left+rect.width/2;
 let y=rect.top+rect.height/2;
-
 createFirework(x,y);
-
 setTimeout(()=>createFirework(x+60,y-40),200);
 setTimeout(()=>createFirework(x-60,y-40),350);
 });
-
-
 window.onclick=function(e){
 if(e.target===modal){
-modal.style.display="none";
-}
-}
-
+modal.style.display="none";}}
 document.getElementById("confirmBtn").addEventListener("click",function(){
 this.innerText="opening... 💌";
 this.disabled=true;
@@ -300,7 +97,6 @@ setTimeout(()=>{
 window.location.href="Card/card.html";
 },1000);
 });
-
 setInterval(()=>{
 const heart=document.createElement("span");
 heart.innerText="💗";
@@ -310,33 +106,24 @@ document.querySelector(".hearts").appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 },300);
 function createFirework(x, y){
-
 for(let i=0;i<60;i++){
-
 let particle=document.createElement("div");
 particle.className="firework";
-
 let angle=Math.random()*2*Math.PI;
 let radius=Math.random()*120;
-
 let moveX=Math.cos(angle)*radius+"px";
 let moveY=Math.sin(angle)*radius+"px";
-
 particle.style.left=x+"px";
 particle.style.top=y+"px";
-
 particle.style.setProperty("--x",moveX);
 particle.style.setProperty("--y",moveY);
-
 particle.style.background=`hsl(${Math.random()*360},100%,60%)`;
-
 document.body.appendChild(particle);
-
 setTimeout(()=>particle.remove(),900);
 }
 }
-
 </script>
 
 </body>
 </html>
+
