@@ -2,28 +2,64 @@
 <html>
 <head>
     <title>will u go out w me Izca?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #fde2e4;  font-family: 'Courier New', 'American Typewriter', 'Georgia', monospace;  display: flex;   flex-direction: column;    align-items: center;    justify-content: center;    min-height: 100vh;    padding: 2rem 1.5rem;    margin: 0;    color: #3a2c2f;    overflow:hidden;  }
-        .paper {   max-width: 700px;    width: 100%;    background: #fff9f2;    border: 2px solid #fbc4c0;    box-shadow: 12px 12px 0 #eec9cb;    padding: 2.8rem 2rem 3rem;    position: relative;    transition: all 0.15s;    z-index:5;  }
-        .paper:after {    content: "✧";    position: absolute;    top: -12px;    left: 40%;    font-size: 42px;    color: #dbb7b7;    transform: rotate(-8deg);    opacity: 0.7;   }
-        h1 {  font-size: 2.8rem;  font-weight: 600;  letter-spacing: -1.5px;  color: #97242c;  margin-bottom: 0.5rem;  font-family: 'Georgia', serif;  text-shadow: 2px 2px 0 #ffd8d6;  line-height: 1.1;  border-bottom: 3px dotted #e6a8a8;  display: inline-block;  padding-bottom: 8px;  }
-        .gif-frame { background: white; padding: 1rem 1rem 0.8rem; border: 2px solid #f3b5b1; box-shadow: 6px 6px 0 #dba3a3; display: inline-block; margin: 1.8rem 0 1.2rem; transform: rotate(-1deg);   }
-        img { display: block; width: 220px; max-width: 100%; height: auto; border: 2px solid #b95b5b;   }
-        .button-area { position: relative; width: 100%; min-height: 130px; margin-top: 2.2rem; padding:0 5px;  }
-        .yes-btn-box, .no-btn-box {  position: relative;  display: inline-block;  transition: all 0.2s ease; }
-        .no-btn-box {  position: absolute;  right: 0;  top: 10px;  }
-        .btn {  background: #ffece5;  border: 4px solid #c15a5a;  color: #3e2828;  font-size: 1.9rem;  font-weight: 700;  padding: 1rem 2.4rem;  letter-spacing: 3px;  box-shadow: 8px 8px 0 #a14646;  cursor: pointer;  transition: 0.05s linear;  }
-        .btn:active {  transform: translate(6px, 6px)  box-shadow: 2px 2px 0 #a14646; }
-        .doodle-heart { font-size: 2.6rem; display: inline-block; margin: 0 4px; transform: rotate(6deg); color: #b34444;  }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(70, 40, 40, 0.4); align-items: center; justify-content: center; z-index: 999;  }
-        .modal-note {  background: #fffbf0;  border: 6px double #c26b6b;  padding: 2.5rem 2.2rem;  max-width: 550px;  width: 90%;  box-shadow: 18px 18px 0 rgba(90, 40, 40, 0.2);  text-align: center;  transform: rotate(0.8deg);  }
-        .lets-go-btn {  background: #d67272;  color: white;  font-size: 1.9rem;  padding: 1rem 2.8rem;  cursor: pointer;  margin-top: 10px;  }
-        .hearts span{  position:fixed;  bottom:-20px;  font-size:20px;  animation:floatUp 6s linear infinite  pointer-events:none;  z-index:1;   }
-        @keyframes floatUp{  0%{transform:translateY(0);opacity:0;}  30%{opacity:1;}  100%{transform:translateY(-110vh);opacity:0;}  }
-        @keyframes shake{  0%{transform:translate(0);}  25%{transform:translate(-4px);}  50%{transform:translate(4px);}  75%{transform:translate(-4px);}  100%{transform:translate(0);}  }
-        .firework { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 9999; animation: explode 900ms ease-out forwards; }
-         @keyframes explode { 0% {  transform: translate(0,0) scale(1);  opacity: 1;  }  100% {  transform: translate(var(--x), var(--y)) scale(0.3);  opacity: 0 }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {  background: #fde2e4; font-family: 'Courier New', 'American Typewriter', 'Georgia', monospace;display: flex; flex-direction: column; align-items: center; justify-content: center;  min-height: 100vh;  padding: 1rem;  margin: 0; color: #3a2c2f;  overflow-x: hidden;  
+        }
+        .paper {    max-width: 600px; width: 100%;  background: #fff9f2; border: 2px solid #fbc4c0;  box-shadow: 8px 8px 0 #eec9cb;  padding: 1.5rem 1rem 2rem;  position: relative; transition: all 0.15s; z-index:5;   margin: 0 auto;
+        }
+        .paper:after {     content: "✧"; position: absolute;  top: -12px; left: 40%; font-size: 42px;  color: #dbb7b7;  transform: rotate(-8deg); opacity: 0.7;   
+        }
+        h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); font-weight: 600;   letter-spacing: -1.5px;   color: #97242c;   margin-bottom: 0.3rem;   font-family: 'Georgia', serif;   text-shadow: 2px 2px 0 #ffd8d6;   line-height: 1.1;   border-bottom: 3px dotted #e6a8a8;   display: inline-block;   padding-bottom: 8px;   word-break: break-word;
+        }
+        .gif-frame {  background: white;  padding: 0.8rem 0.8rem 0.6rem;  border: 2px solid #f3b5b1;  box-shadow: 4px 4px 0 #dba3a3;  display: inline-block;  margin: 1rem 0 0.8rem;  transform: rotate(-1deg); max-width: 100%;
+        }
+        img {  display: block;  width: 200px;  max-width: 100%;  height: auto;  border: 2px solid #b95b5b  margin: 0 auto;
+        }
+        .button-area {  position: relative;   width: 100%;  min-height: 180px;  margin-top: 1.5rem;   padding:0 5px;  display: flex;  flex-wrap: wrap;  justify-content: space-between;  align-items: center;  gap: 1rem;
+        }
+        .yes-btn-box, .no-btn-box {   position: relative;  display: inline-block;   transition: all 0.2s ease; flex: 0 1 auto;
+        }
+        .no-btn-box { position: relative; right: auto; top: auto;  
+        }
+        .btn { background: #ffece5;   border: 4px solid #c15a5a;   color: #3e2828;   font-size: clamp(1.2rem, 5vw, 1.9rem);    font-weight: 700;  padding: 0.8rem 1.5rem;  letter-spacing: 2px;  box-shadow: 6px 6px 0 #a14646; cursor: pointer;  transition: 0.05s linear;white-space: nowrap;min-width: 120px;border-radius: 0;-webkit-appearance: none;
+        }
+        .btn:active { transform: translate(4px, 4px);   box-shadow: 2px 2px 0 #a14646; 
+        }
+        .doodle-heart {  font-size: clamp(1.8rem, 6vw, 2.6rem);  display: inline-block;  margin: 0 4px; transform: rotate(6deg); color: #b34444;  
+        }
+        .modal {  display: none; position: fixed; top: 0;  left: 0;  width: 100%; height: 100%; background: rgba(70, 40, 40, 0.7); align-items: center; justify-content: center; z-index: 999; padding: 1rem;
+        }
+        .modal-note {  background: #fffbf0;  border: 6px double #c26b6b;  padding: 1.8rem 1.2rem;  max-width: 500px; width: 95%; box-shadow: 12px 12px 0 rgba(90, 40, 40, 0.2);   text-align: center;    transform: rotate(0.8deg);  
+        }
+        .modal-note h2 { font-size: clamp(1.4rem, 6vw, 2rem); margin-bottom: 0.5rem;
+        }
+        .modal-note p { font-size: clamp(1rem, 4vw, 1.2rem); margin: 0.5rem 0 1rem;
+        }
+        .lets-go-btn {   background: #d67272;   color: white;   font-size: clamp(1.2rem, 5vw, 1.9rem);   padding: 0.8rem 1.8rem;   cursor: pointer;   margin-top: 10px; border: none;border-radius: 0; -webkit-appearance: none;
+        }
+        .hearts span{   position:fixed;   bottom:-20px;   font-size:20px;   animation:floatUp 6s linear infinite;   pointer-events:none;  z-index:1;   
+        }
+        @keyframes floatUp{  0%{transform:translateY(0);opacity:0;}  30%{opacity:1;}   100%{transform:translateY(-120vh);opacity:0;}  
+        }
+        @keyframes shake{  0%{transform:translate(0);} 25%{transform:translate(-4px);} 50%{transform:translate(4px);}  75%{transform:translate(-4px);}  100%{transform:translate(0);}  
+        }
+        .firework { position: fixed;width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 9999;  animation: explode 900ms ease-out forwards; 
+        }
+        @keyframes explode { 
+            0% { transform: translate(0,0) scale(1); opacity: 1; }  100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0 }
+        }
+        @media (max-width: 480px) {body { padding: 0.5rem; }
+            .paper { padding: 1rem 0.8rem 1.5rem; }.button-area {  flex-direction: column;  gap: 1.5rem;  min-height: 220px;
+            }
+            .btn { min-width: 160px;  padding: 0.8rem 1rem; font-size: 1.5rem;
+            }
+            .no-btn-box.fixed-position { position: fixed !important; z-index: 1000; max-width: 180px;
+            }
+        }
+        @media (max-width: 360px) {.btn { min-width: 140px; font-size: 1.3rem; }
+        }
     </style>
 </head>
 <body>
@@ -32,7 +68,7 @@
     <span class="doodle-heart">❤️</span>
     <span class="doodle-heart" style="transform: rotate(-12deg);">❤️</span>
     <div class="gif-frame">
-        <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif">
+        <img src="https://c.tenor.com/gX4B3tqabzkAAAAC/eyes-puss-in-boots.gif" alt="Puss in Boots eyes">
     </div>
     <div class="button-area">
         <div class="yes-btn-box" id="yesContainer">
@@ -43,6 +79,7 @@
         </div>
     </div>
 </div>
+
 <div id="confirmationModal" class="modal">
     <div class="modal-note">
         <h2>weh? talaga ba?</h2>
@@ -50,80 +87,134 @@
         <button class="lets-go-btn" id="confirmBtn">yes, let's go!</button>
     </div>
 </div>
+
 <div class="hearts"></div>
+
 <script>
-let yesScale=1;
-const noButton=document.getElementById('noButton');
-const noContainer=document.getElementById('noContainer');
-const yesButton=document.getElementById('yesButton');
-const modal=document.getElementById('confirmationModal');
+let yesScale = 1;
+const noButton = document.getElementById('noButton');
+const noContainer = document.getElementById('noContainer');
+const yesButton = document.getElementById('yesButton');
+const modal = document.getElementById('confirmationModal');
+let isAnimating = false;
 
-function runAway(){
-document.body.style.animation="shake 0.2s";
-const btnWidth=noContainer.offsetWidth;
-const btnHeight=noContainer.offsetHeight;
-const maxX=window.innerWidth-btnWidth-20;
-const maxY=window.innerHeight-btnHeight-20;
-const randomX=Math.random()*maxX;
-const randomY=Math.random()*maxY;
-noContainer.style.position="fixed";
-noContainer.style.left=randomX+"px";
-noContainer.style.top=randomY+"px";
-noContainer.style.right="auto";
-yesScale+=0.12;
-yesButton.style.transform=`scale(${yesScale})`;
-setTimeout(()=>{document.body.style.animation="";},200);
+function runAway() {
+    if (isAnimating) return;
+    isAnimating = true;
+    document.body.style.animation = "shake 0.2s";
+
+    const btnWidth = noContainer.offsetWidth || 160;
+    const btnHeight = noContainer.offsetHeight || 80;
+    const maxX = Math.max(0, window.innerWidth - btnWidth - 20);
+    const maxY = Math.max(0, window.innerHeight - btnHeight - 20);
+
+    const randomX = Math.min(maxX, Math.max(10, Math.random() * maxX));
+    const randomY = Math.min(maxY, Math.max(10, Math.random() * maxY));
+
+    noContainer.style.position = 'fixed';
+    noContainer.style.left = randomX + 'px';
+    noContainer.style.top = randomY + 'px';
+    noContainer.style.right = 'auto';
+    noContainer.style.bottom = 'auto';
+    noContainer.classList.add('fixed-position');
+    yesScale = Math.min(yesScale + 0.15, 2.5);
+    yesButton.style.transform = `scale(${yesScale})`;
+    yesButton.style.transition = 'transform 0.2s ease';
+    
+    setTimeout(() => {
+        document.body.style.animation = '';
+        isAnimating = false;
+    }, 200);
 }
-noButton.addEventListener("mouseover",runAway);
-noButton.addEventListener("touchstart",runAway);
-noButton.addEventListener("click",runAway);
-yesButton.addEventListener("click",(e)=>{
-new Audio("https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3").play();
-modal.style.display="flex";
-let rect=yesButton.getBoundingClientRect();
-let x=rect.left+rect.width/2;
-let y=rect.top+rect.height/2;
-createFirework(x,y);
-setTimeout(()=>createFirework(x+60,y-40),200);
-setTimeout(()=>createFirework(x-60,y-40),350);
+
+noButton.addEventListener('mouseover', runAway);
+noButton.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    runAway();
 });
-window.onclick=function(e){
-if(e.target===modal){
-modal.style.display="none";}}
-document.getElementById("confirmBtn").addEventListener("click",function(){
-this.innerText="opening... 💌";
-this.disabled=true;
-setTimeout(()=>{
-window.location.href="Card/card.html";
-},1000);
+noButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    runAway();
 });
-setInterval(()=>{
-const heart=document.createElement("span");
-heart.innerText="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(3+Math.random()*3)+"s";
-document.querySelector(".hearts").appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},300);
-function createFirework(x, y){
-for(let i=0;i<60;i++){
-let particle=document.createElement("div");
-particle.className="firework";
-let angle=Math.random()*2*Math.PI;
-let radius=Math.random()*120;
-let moveX=Math.cos(angle)*radius+"px";
-let moveY=Math.sin(angle)*radius+"px";
-particle.style.left=x+"px";
-particle.style.top=y+"px";
-particle.style.setProperty("--x",moveX);
-particle.style.setProperty("--y",moveY);
-particle.style.background=`hsl(${Math.random()*360},100%,60%)`;
-document.body.appendChild(particle);
-setTimeout(()=>particle.remove(),900);
+
+yesButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    try {
+        const audio = new Audio("https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3");
+        audio.volume = 0.5;
+        audio.play().catch(e => console.log('Audio play failed:', e));
+    } catch(err) {
+        console.log('Audio error:', err);
+    }
+    
+    modal.style.display = 'flex';
+    
+    const rect = yesButton.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    
+    createFirework(x, y);
+    setTimeout(() => createFirework(x + 40, y - 30), 200);
+    setTimeout(() => createFirework(x - 40, y - 30), 350);
+});
+
+window.onclick = function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+document.getElementById('confirmBtn').addEventListener('click', function() {
+    this.innerText = 'opening... 💌';
+    this.disabled = true;
+    setTimeout(() => {
+        window.location.href = 'Card/card.html';
+    }, 1000);
+});
+
+setInterval(() => {
+    const heart = document.createElement('span');
+    heart.innerText = '💗';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+    document.querySelector('.hearts').appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+function createFirework(x, y) {
+    for (let i = 0; i < 40; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'firework';
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = Math.random() * 100;
+        const moveX = Math.cos(angle) * radius + 'px';
+        const moveY = Math.sin(angle) * radius + 'px';
+        
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.setProperty('--x', moveX);
+        particle.style.setProperty('--y', moveY);
+        particle.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 900);
+    }
 }
-}
+window.addEventListener('resize', () => {
+    if (noContainer.style.position === 'fixed') {
+        noContainer.style.position = 'relative';
+        noContainer.style.left = 'auto';
+        noContainer.style.top = 'auto';
+        noContainer.classList.remove('fixed-position');
+    }
+});
+
+document.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) e.preventDefault();
+}, { passive: false });
+
 </script>
-
 </body>
 </html>
-
